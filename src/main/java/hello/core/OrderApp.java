@@ -5,12 +5,19 @@ import hello.core.member.Member;
 import hello.core.member.MemberService;
 import hello.core.order.Order;
 import hello.core.order.OrderService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderApp {
     public static void main(String[] args) {
-        Appconfig appconfig = new Appconfig();
-        MemberService memberService = appconfig.memberService();
-        OrderService orderService = appconfig.orderService();
+        // ApplicationContext 를 스프링 컨테이너라고 한다.
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Appconfig.class);
+
+        MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
+        OrderService orderService = applicationContext.getBean("orderService", OrderService.class);
+//        Appconfig appconfig = new Appconfig();
+//        MemberService memberService = appconfig.memberService();
+//        OrderService orderService = appconfig.orderService();
 
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);
@@ -19,6 +26,6 @@ public class OrderApp {
         Order order = orderService.createOrder(memberId, "itemA", 10000);
 
         System.out.println("order = " + order);
-        System.out.println("ordercalculatePrice = " + order.calculatePrice());
+        System.out.println("order calculatePrice = " + order.calculatePrice());
     }
 }
