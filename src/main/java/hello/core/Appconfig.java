@@ -11,7 +11,8 @@ import hello.core.order.OrderServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration // @Configuration 해주지 않으면 스프링 컨테이너 CGLIB 에서 싱글톤을 보장해주는 기능이 사라진다.
+// @Configuration 해주지 않으면 스프링 컨테이너 CGLIB 에서 싱글톤을 보장해주는 기능이 사라진다.
+//@Configuration
 public class Appconfig {
     @Bean // 등록된 메서드를, 스프링 빈으로 등록한다.
     public MemberService memberService() {

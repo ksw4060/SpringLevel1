@@ -1,6 +1,7 @@
 package hello.core.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 // 컴포넌트 스캔과 의존관계 자동 주입을 위해서, @Component, @Autowired 가 추가됨.
