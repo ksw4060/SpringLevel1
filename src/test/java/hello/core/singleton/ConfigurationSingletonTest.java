@@ -15,10 +15,13 @@ public class ConfigurationSingletonTest {
 
     @Test
     void configurationTest() {
+        // AppConfig.class -> AutoAppConfig.class 로 변경하고. 등록해준 클래스에 대해 각 이름 변경
         ApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class);
-
+        // memberService -> memberServiceImpl
         MemberServiceImpl memberService = ac.getBean("memberServiceImpl", MemberServiceImpl.class);
+        // orderService -> orderServiceImpl
         OrderServiceImpl orderService = ac.getBean("orderServiceImpl", OrderServiceImpl.class);
+        // memberRepository -> memoryMemberRepository
         MemberRepository memberRepository = ac.getBean("memoryMemberRepository", MemoryMemberRepository.class);
 
         // 모두 같은 인스턴스를 참고하고 있는지 테스트해본다.
